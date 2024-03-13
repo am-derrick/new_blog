@@ -12,8 +12,13 @@
             Crope Blog
         </a>
         <a class="ml-auto mr-3 text-xs font-medium" href="{{ url_for('index')}}">Home</a>
-        <a class="mr-3 text-xs font-medium" href="/index">Blogs</a>
+        <a class="mr-3 text-xs font-medium" href="{{ url_for('posts')}}">Blogs</a>
+        {% if current_user.is_anonymous %}
         <a class="mr-3 text-xs font-medium" href="{{ url_for('login')}}">Login</a>
+        {% else %}
+        <a class="mr-3 text-xs font-medium" href="{{ url_for('add_post')}}">Add Post</a>
+        <a class="mr-3 text-xs font-medium" href="{{ url_for('logout')}}">Logout</a>
+        {% endif %}
     </div>
     <hr>
     {% with messages = get_flashed_messages(with_categories=true) %}

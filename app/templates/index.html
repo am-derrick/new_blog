@@ -2,65 +2,36 @@
 
 {% block content %}
 <div class="p-5 h-full">
-    <div class="h-3/6 flex items-center">
-        <!-- Mosaic Section -->
-        <div class="flex w-3/6 h-3/6">
-            <!-- Mosaic -->
+    <div class="flex flex-wrap md:flex-nowrap justify-center md:justify-between items-center py-10">
+        <!-- Mosaic / Hero Section -->
+        <div class="md:w-1/2">
             <img src="https://images.unsplash.com/photo-1546074177-ffdda98d214f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="read more image" class=" w-full object-cover">
-
+                alt="read more image" class="rounded shadow-lg">
         </div>
-        <div class="flex flex-col justify-center w-3/6">
-            <!-- Text about -->
-            <p class="text-center">
+        <div class="md:w-1/2 mt-4 md:mt-0 md:pl-10 text-center md:text-left">
+            <p class="text-xl md:text-2xl">
                 Welcome to the world of Reading
             </p>
         </div>
     </div>
-    <div class="h-3/6 p-5 flex wrap justify-around">
+    <div class="flex flex-wrap justify-around py-10">
         <!-- Latest Blogs Section -->
-        <div class="mx-4 h-44 w-44 rounded shadow flex flex-col">
-            <div class="bg-black text-white  p-2 rounded-top">
-                Is PHP Really Dead?
+        {% for post in posts %}
+        <div class="mx-4 my-4 h-auto w-64 rounded shadow-lg flex flex-col overflow-hidden">
+            <div class="bg-black text-white p-2">
+                {{ post.title }} <!-- Assuming you add a title field -->
             </div>
-            <p class="p-2 text-clip overflow-hidden">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum illum totam nesciunt ex ratione error,
-                magnam blanditiis commodi. Adipisci labore expedita provident sit nemo sed, numquam quod. Non, aliquam
-                ut?
+            <p class="p-2 text-clip overflow-hidden h-32">
+                {{ post.body }}
             </p>
             <hr class="mt-auto">
             <a href="#" class="w-full block p-2 text-xs text-blue-400">
                 READ BLOG
             </a>
         </div>
-        <div class="mx-4 h-44 w-44 rounded shadow flex flex-col">
-            <div class="bg-black text-white  p-2 rounded-top">
-                Is PHP Really Dead?
-            </div>
-            <p class="p-2 text-clip overflow-hidden">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum illum totam nesciunt ex ratione error,
-                magnam blanditiis commodi. Adipisci labore expedita provident sit nemo sed, numquam quod. Non, aliquam
-                ut?
-            </p>
-            <hr class="mt-auto">
-            <a href="#" class="w-full block p-2 text-xs text-blue-400">
-                READ BLOG
-            </a>
-        </div>
-        <div class="mx-4 h-44 w-44 rounded shadow flex flex-col">
-            <div class="bg-black text-white  p-2 rounded-top">
-                Is PHP Really Dead?
-            </div>
-            <p class="p-2 text-clip overflow-hidden">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum illum totam nesciunt ex ratione error,
-                magnam blanditiis commodi. Adipisci labore expedita provident sit nemo sed, numquam quod. Non, aliquam
-                ut?
-            </p>
-            <hr class="mt-auto">
-            <a href="#" class="w-full block p-2 text-xs text-blue-400">
-                READ BLOG
-            </a>
-        </div>
+        {% else %}
+        <p>No posts to display.</p>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mt-6 flex flex-wrap justify-center">
+    {% for post in posts %}
+    <div class="mx-4 my-4 h-44 w-44 rounded shadow-lg flex flex-col">
+        <div class="bg-black text-white p-2 rounded-t">
+            {{ post.title }} <!-- Assuming your Post model has a title field -->
+        </div>
+        <p class="p-2 text-clip overflow-hidden">
+            {{ post.body }}
+        </p>
+        <hr class="mt-auto">
+        <a href="#" class="w-full block p-2 text-xs text-blue-400">
+            READ BLOG
+        </a>
+    </div>
+    {% else %}
+    <p>No posts to display.</p>
+    {% endfor %}
+</div>
+{% endblock %}
